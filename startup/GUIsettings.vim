@@ -5,11 +5,13 @@
 colorscheme mustang
 
 " set number lines to be on
-set nu
+set nornu nonu rnu
 
 " font
 " set gfn=Monaco\ for\ Powerline:h14
-set gfn=Bitstream\ Vera\ Sans\ Mono:h13
+" set gfn=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline:h13
+" set guifont to be patched powerline fonts
+set gfn=DejaVu\ Sans\ Mono\ for\ Powerline:h13
 
 " no menu / toolbar / scrollbars
 set guioptions-=r
@@ -25,7 +27,7 @@ set showmode            " Show mode I'm in
 set showcmd             " Show command I'm typing
 set laststatus=2        " Always show status line
 set cursorline          " highlight current line
-set cursorline          " chighlight current line
+" set cursorline          " chighlight current line
 
 " Setting this below makes it so that error messages don't disappear 
 " after one second on startup.
@@ -33,5 +35,3 @@ set debug=msg
 
 " Make command line two lines high
 set ch=2
-
-

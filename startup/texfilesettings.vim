@@ -3,6 +3,8 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:tex_indent_items = 1 " indent for items
+let g:tex_comment_nospell= 1 " no spell checking for comments
+" let g:tex_fold_enabled = 1 " enable folding
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -19,6 +21,7 @@ if has("autocmd")
   autocmd FileType tex setlocal fo=tcq nolist textwidth=0
   autocmd FileType tex nmap <C-n> (
   autocmd FileType tex nmap <C-m> )
+  autocmd FileType tex setlocal spell spelllang=en_us
   " Define what is a word
   autocmd FileType tex set iskeyword=@,48-57,_,-,:,192-255
   autocmd FileType tex highlight Cursor guifg=black guibg=Yellow

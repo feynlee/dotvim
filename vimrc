@@ -14,11 +14,14 @@ source ~/.vim/startup/autocommands.vim
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI
-source ~/.vim/startup/powerline.vim
+" source ~/.vim/startup/powerline.vim
+source ~/.vim/startup/airline.vim
+" source ~/.vim/startup/tmuxline.vim
 " File Management Plugins
 source ~/.vim/startup/project.vim
 source ~/.vim/startup/nerdtree.vim
 source ~/.vim/startup/lustyjuggler.vim
+source ~/.vim/startup/ctrlp.vim
 " Latex Plugins
 source ~/.vim/startup/texfilesettings.vim
 source ~/.vim/startup/latexbox.vim
@@ -28,7 +31,7 @@ source ~/.vim/startup/align.vim
 " Editing Plugins
 source ~/.vim/startup/easymotion.vim
 source ~/.vim/startup/yankring.vim
-source ~/.vim/startup/neocomplete.vim
+source ~/.vim/startup/neocomplcache.vim
 source ~/.vim/startup/gundo.vim
 source ~/.vim/startup/taglist.vim
 " Git plugins

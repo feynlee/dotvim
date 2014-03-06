@@ -8,6 +8,10 @@ snippet ref "\ref{}" i
 \ref{$1}
 endsnippet
 
+snippet cit "\cite{}" i
+\cite{$1}
+endsnippet
+
 snippet [ "[]" i
 [$1]
 endsnippet
@@ -216,6 +220,14 @@ snippet equi "\equiv" i
 \equiv
 endsnippet
 
+snippet Eq "Eq.~(ref)" i
+Eq.~(\ref{$1})
+endsnippet
+
+snippet FI "FIG.~\ref" i
+FIG.~\ref{$1}
+endsnippet
+
 snippet ttil "\texttildelow" i
 \texttildelow
 endsnippet
@@ -360,6 +372,14 @@ snippet ss "\Ss" i
 \Ss
 endsnippet
 
+snippet pv "\Pp" i
+\Pp
+endsnippet
+
+snippet xx "\Xx" i
+\Xx
+endsnippet
+
 snippet qq "\Qq" i
 \Qq
 endsnippet
@@ -370,6 +390,22 @@ endsnippet
 
 snippet nut "\tilde{\nu}" i
 \nuT
+endsnippet
+
+snippet ut "\hat{u}" i
+\uT
+endsnippet
+
+snippet vt "\hat{v}" i
+\vT
+endsnippet
+
+snippet ul "\tilde{u}" i
+\uL
+endsnippet
+
+snippet vl "\tilde{v}" i
+\vL
 endsnippet
 
 snippet mul "\hat{\mu}" i
@@ -399,6 +435,16 @@ endsnippet
 snippet lf "\lf{}" i
 \lF{$1}
 endsnippet
+
+#############################
+#   diary template          #
+#############################
+snippet ent "entry" !b
+\begin{entry}{$1}{$2}
+$3
+\end{entry}
+endsnippet
+
 ###########################################################################
 #                            TEXTMATE SNIPPETS                            #
 ###########################################################################

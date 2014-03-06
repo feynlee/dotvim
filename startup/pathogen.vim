@@ -29,10 +29,10 @@ set nocompatible
 call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
-" turn syntax highlighting on by default
-syntax on
 " turns on filetype detection, plugin, indent
 filetype plugin indent on
+" turn syntax highlighting on by default
+syntax on
 
 " Delete all user-defined commands
 " comc

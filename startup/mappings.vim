@@ -55,6 +55,8 @@ nmap <silent> ,et :e ~/.vim/bundle/ultisnips/UltiSnips/tex.snippets<CR>
 nmap <silent> ,en :e ~/.vim/bundle/Tex-9/ftplugin/tex_nine.vim<CR>
 nmap <silent> ,ms :mksession! ~/Tmp/vimsession/recent.vim<CR>
 
+nmap <silent> ,dv :vert diffsplit 
+
 function! Makesession()
        so ~/Tmp/vimsession/recent.vim
        highlight Cursor guifg=black guibg=Yellow
@@ -95,4 +97,4 @@ imap <silent> .<Space> .<CR>
 abc
 iab ths this
 iab wht what
-
+iab <expr> dts strftime("%c")

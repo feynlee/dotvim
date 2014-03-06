@@ -1,7 +1,6 @@
 " syntax highlighting on
 syntax on
 
-
 " font
 " set guifont=Menlo\ Regular:h14
 

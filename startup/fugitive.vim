@@ -15,4 +15,5 @@ autocmd User fugitive
 
 " Git Status
 map ,gs :Gstatus <CR>
+nmap ,gc :Gcommit -am '
 
