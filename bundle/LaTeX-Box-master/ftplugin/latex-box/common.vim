@@ -3,6 +3,7 @@
 " Error Format {{{
 " Note: The error formats assume we're using the -file-line-error with
 "       [pdf]latex.
+" Note: See |errorformat-LaTeX| for more info.
 
 " Check for options
 if !exists("g:LatexBox_show_warnings")
@@ -15,9 +16,14 @@ if !exists("g:LatexBox_ignore_warnings")
 				\ 'specifier changed to']
 endif
 
-" See |errorformat-LaTeX|
+" Standard error message formats
+" Note: We consider statements that starts with "!" as errors
 setlocal efm=%E!\ LaTeX\ %trror:\ %m
 setlocal efm+=%E%f:%l:\ %m
+setlocal efm+=%E!\ %m
+
+" More info for undefined control sequences
+setlocal efm+=%Z<argument>\ %m
 
 " Show or ignore warnings
 if g:LatexBox_show_warnings
@@ -28,22 +34,18 @@ if g:LatexBox_show_warnings
 	setlocal efm+=%+WLaTeX\ %.%#Warning:\ %.%#line\ %l%.%#
 	setlocal efm+=%+W%.%#\ at\ lines\ %l--%*\\d
 	setlocal efm+=%+WLaTeX\ %.%#Warning:\ %m
-	setlocal efm+=%+W%.%#%.%#Warning:\ %m
+	setlocal efm+=%+W%.%#Warning:\ %m
 else
 	setlocal efm+=%-WLaTeX\ %.%#Warning:\ %.%#line\ %l%.%#
 	setlocal efm+=%-W%.%#\ at\ lines\ %l--%*\\d
 	setlocal efm+=%-WLaTeX\ %.%#Warning:\ %m
-	setlocal efm+=%-W%.%#%.%#Warning:\ %m
+	setlocal efm+=%-W%.%#Warning:\ %m
 endif
-
-" Consider the remaining statements that starts with "!" as errors
-setlocal efm+=%E!\ %m
 
 " Push file to file stack
 setlocal efm+=%+P**%f
 
 " Ignore unmatched lines
-setlocal efm+=%-G\\s%#
 setlocal efm+=%-G%.%#
 " }}}
 
@@ -57,6 +59,16 @@ endif
 " Where vertical splits appear
 if !exists('g:LatexBox_split_side')
 	let g:LatexBox_split_side = "leftabove"
+endif
+
+" Resize when split?
+if !exists('g:LatexBox_split_resize')
+	let g:LatexBox_split_resize = 0
+endif
+
+" Toggle help info
+if !exists('g:LatexBox_toc_hidehelp')
+	let g:LatexBox_toc_hidehelp = 0
 endif
 " }}}
 
@@ -90,17 +102,24 @@ function! LatexBox_GetMainTexFile()
 	endfor
 
 	" 3. scan current file for "\begin{document}"
-	if &filetype == 'tex' && search('\C\\begin\_\s*{document}', 'nw') != 0
+	if &filetype == 'tex' && search('\m\C\\begin\_\s*{document}', 'nw') != 0
 		return expand('%:p')
 	endif
 
-	" 4 borrow the Vim-Latex-Suite method of finding it
+	" 4. use 'main.tex' if it exists in the same directory (and is readable)
+	let s:main_dot_tex_file=expand('%:p:h') . '/main.tex'
+	if filereadable(s:main_dot_tex_file)
+		let b:main_tex_file=s:main_dot_tex_file
+		return b:main_tex_file
+	endif
+
+	" 5. borrow the Vim-Latex-Suite method of finding it
 	if Tex_GetMainFileName() != expand('%:p')
 		let b:main_tex_file = Tex_GetMainFileName()
 		return b:main_tex_file
 	endif
 
-	" 5. prompt for file with completion
+	" 6. prompt for file with completion
 	let b:main_tex_file = s:PromptForMainFile()
 	return b:main_tex_file
 endfunction
@@ -203,7 +222,7 @@ function! LatexBox_View()
 	if has('win32')
 		let cmd = '!start /b' . cmd . ' >nul'
 	else
-		let cmd = '!' . cmd . ' >/dev/null &'
+		let cmd = '!' . cmd . ' &>/dev/null &'
 	endif
 	silent execute cmd
 	if !has("gui_running")

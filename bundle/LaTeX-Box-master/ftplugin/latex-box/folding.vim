@@ -31,6 +31,9 @@ endif
 if !exists('g:LatexBox_fold_envs')
     let g:LatexBox_fold_envs=1
 endif
+if !exists('g:LatexBox_fold_envs_force')
+    let g:LatexBox_fold_envs_force = []
+endif
 if !exists('g:LatexBox_fold_parts')
     let g:LatexBox_fold_parts=[
                 \ "appendix",
@@ -47,6 +50,12 @@ if !exists('g:LatexBox_fold_sections')
                 \ "subsection",
                 \ "subsubsection"
                 \ ]
+endif
+if !exists('g:LatexBox_fold_toc')
+    let g:LatexBox_fold_toc=0
+endif
+if !exists('g:LatexBox_fold_toc_levels')
+    let g:LatexBox_fold_toc_levels=1
 endif
 
 
@@ -147,15 +156,33 @@ function! LatexBox_FoldLevel(lnum)
         endif
     endfor
 
+    " Never fold \end{document}
+    if line =~# '^\s*\\end{document}'
+        return 0
+    endif
+
     " Fold environments
-    if g:LatexBox_fold_envs == 1
-        if line =~# s:envbeginpattern
+    if line =~# s:envbeginpattern
+        if g:LatexBox_fold_envs == 1
             return "a1"
-        elseif line =~# '^\s*\\end{document}'
-            " Never fold \end{document}
-            return 0
-        elseif line =~# s:envendpattern
+        else
+            let env = matchstr(line,'\\begin\*\?{\zs\w*\*\?\ze}')
+            if index(g:LatexBox_fold_envs_force, env) >= 0
+                return "a1"
+            else
+                return "="
+            endif
+        endif
+    elseif line =~# s:envendpattern
+        if g:LatexBox_fold_envs == 1
             return "s1"
+        else
+            let env = matchstr(line,'\\end\*\?{\zs\w*\*\?\ze}')
+            if index(g:LatexBox_fold_envs_force, env) >= 0
+                return "s1"
+            else
+                return "="
+            endif
         endif
     endif
 

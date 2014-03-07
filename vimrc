@@ -1,5 +1,7 @@
 " Load Pathogen settings
 source ~/.vim/startup/pathogen.vim
+"source ~/.vim/startup/Vundle.vim
+source ~/.vim/startup/project.vim
 
 " Load Editor Settings
 source ~/.vim/startup/GUIsettings.vim
@@ -18,7 +20,7 @@ source ~/.vim/startup/autocommands.vim
 source ~/.vim/startup/airline.vim
 " source ~/.vim/startup/tmuxline.vim
 " File Management Plugins
-source ~/.vim/startup/project.vim
+" source ~/.vim/startup/project.vim
 source ~/.vim/startup/nerdtree.vim
 source ~/.vim/startup/lustyjuggler.vim
 source ~/.vim/startup/ctrlp.vim

@@ -13,7 +13,7 @@ map <silent> <Leader>ls :silent
                 \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>"
                 \ "%:p" <CR>
 
-" map <silent> <Leader>ls :silent 
+" map <silent> <Leader>ls :silent
 "   \!/Applications/Skim.app/Contents/SharedSupport/displayline
 "   \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>
 

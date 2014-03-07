@@ -17,7 +17,8 @@ let g:tex_bibfiles = ['References.bib']
 
 " Don't Auto-complete [ ( {
 let g:tex_cycle_delimeters = 0
-" Change the <LocalLeader>S to mapping to \Sigma in
-" ~/.vim/bundle/TeX-9/ftplugin/tex_nine.vim
+" Change the <LocalLeader>S to mapping to \Sigma in ftplugin/tex.vim
+autocmd FileType tex inoremap <buffer> <LocalLeader>S \Sigma
 
+" ~/.vim/bundle/TeX-9/ftplugin/tex_nine.vim
 
