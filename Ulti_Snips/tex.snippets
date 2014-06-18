@@ -156,6 +156,10 @@ snippet sum "\sum{}" i
 \sum$1{$2}
 endsnippet
 
+snippet prod "\prod" i
+\prod_{$1}{$2}
+endsnippet
+
 snippet uar "\uparrow" i
 \uparrow
 endsnippet
@@ -505,7 +509,7 @@ endsnippet
 snippet fm "fmffile" b
 \begin{fmffile}{$1}
     \begin{fmfgraph*}($2,$3) %Sets size of Diagram
-    \fmfleft{$4}   %Sets there to be 2 sources 
+    \fmfleft{$4}   %Sets there to be 2 sources
     \fmfright{$5}    %Sets there to be 2  outputs
     $6
     \end{fmfgraph*}
@@ -647,7 +651,7 @@ ${0}
 endsnippet
 
 snippet sec "Section" b
-\section{${1:section name}} 
+\section{${1:section name}}
 \label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/g}}}
 
 ${0}
@@ -693,5 +697,104 @@ ${0}
 
 % subparagraph $2 (end)
 endsnippet
+
+###################################################################
+# template
+###################################################################
+
+snippet tem "template" !b
+\documentclass[${1:aps},${2:reprint},notitlepage,superscriptaddress]{revtex4-1}
+% \documentclass{tufte-book}
+\usepackage{pdfsync}
+\usepackage{amsmath}  % need for subequations
+\usepackage{amsfonts} % note how statements can be commented out
+\usepackage{amssymb}
+\usepackage{MnSymbol}
+\usepackage{mathrsfs} % define the \mathscr font
+\usepackage{textcomp} % to define \texttildelow font
+\usepackage{bbm}
+\usepackage{float}    % suppress float figures and tables
+\usepackage{accents}  % put tilde under symbols using underaccent{}{}
+%\usepackage{undertilde} % for tilde under symbols
+% \usepackage{dsfont} % doublestroke fonts
+% \usepackage{bm}
+\usepackage{graphicx} % for figures
+\usepackage{mathtools}
+\usepackage{graphics}
+\usepackage{epsfig}
+%\usepackage[section]{placeins}
+\usepackage{multirow}
+\usepackage{bibentry}
+\usepackage{braket}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{listings}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{slashed}
+%\usepackage{babel}
+%\usepackage{parskip}
+\usepackage{xfrac}
+\usepackage{xcolor}
+\usepackage{cases}
+\usepackage[retainorgcmds]{IEEEtrantools}
+% \usepackage[left=0.1in,top=0.6in,bottom=1in]{geometry}
+\usepackage[pdftex, pdfborder= 0 0 0, citecolor=blue, urlcolor=blue, linkcolor=blue, colorlinks=true, bookmarksopen=true]{hyperref}
+% \numberwithin{equation}{section}
+
+\setcounter{secnumdepth}{1}
+
+
+\graphicspath{${3:./figures/}}
+% \geometry{left=0.8in,right=2.8in}
+\hypersetup{pdftex, pdfborder= 0 0 0, citecolor=blue, urlcolor=blue, linkcolor=blue, colorlinks=true, bookmarksopen=true}
+
+% \title{title}
+% \author{Ziyue Li}
+
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+%\newcommand{\Cc}{\mathbb{C}}
+%\newcommand{\Ss}{\mathbb{S}}
+%\newcommand{\Pp}{\mathbb{P}}
+%\newcommand{\Qq}{\mathrm{q}}
+%\newcommand{\Xx}{\mathbb{X}}
+%\newcommand{\pT}{\hat{+}}
+%\newcommand{\mT}{\hat{-}}
+%\newcommand{\muT}{\hat{\mu}}
+%\newcommand{\nuT}{\hat{\nu}}
+%\newcommand{\uniT}[1]{\mathring{#1}}
+%\newcommand{\uT}{\hat{u}}
+%\newcommand{\vT}{\hat{v}}
+%\newcommand{\uL}{\tilde{u}}
+%\newcommand{\vL}{\tilde{v}}
+%\newcommand{\itP}[1]{\hat{#1}}
+%\newcommand{\lF}[1]{\tilde{#1}}
+
+
+\begin{document}
+\title{$4}
+\author{Ziyue Li}
+\affiliation{Department of Physics, North Carolina State University, Raleigh, North Carolina 27695-8202}
+\author{Chueng-Ryong Ji}
+\affiliation{Department of Physics, North Carolina State University, Raleigh, North Carolina 27695-8202}
+
+\begin{abstract}
+${5:To be finished.}
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+\label{sec:introduction}
+
+${6:To be finished.}
+
+% section introduction (end)
+
+$7
+
+\end{document}
+endsnippet
+
 
 # vim:ft=snippets:
