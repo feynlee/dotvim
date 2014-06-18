@@ -7,6 +7,8 @@ let g:proj_flags="bcmLst"
 nmap <silent> ,qq <Plug>ToggleProject
 " map <silent> <Leader>pp :Project<CR>
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Project for vundle
 "let g:project_use_nerdtree = 1
 "set rtp+=~/.vim/bundle/vim-project/

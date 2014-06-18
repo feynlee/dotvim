@@ -20,8 +20,8 @@ set nolist
 "set wrapmargin=0
 "set display=lastline       " don't display @ with long paragraph
 
-"F7 WordProcessorOn 
+"F7 WordProcessorOn
 map <silent> ,wo :set linebreak <CR> :set display+=lastline <CR> :set wrap <CR> :set fo=watcq <CR>
-"F8 WordProcessorOff 
+"F8 WordProcessorOff
 map <silent> ,wf :set nowrap <CR> :set nospell <CR> :set fo=tcq <CR>
 

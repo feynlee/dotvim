@@ -19,7 +19,7 @@ set showmatch
 "set wildmode=list:full
 set wildmenu
 " Character to start command line completion
-" set wildchar=<TAB>  
+" set wildchar=<TAB>
 " When completing by tag, show the whole tag, not just the function name
 set showfulltag
 " Enable search highlighting
@@ -34,11 +34,6 @@ set complete+=k
 
 " Don't unload buffer when close.
 set hidden
-
-" Keep 20 lines of command line history
-" (use arrow keys for history)
-set history=1000
-set undolevels=1000
 
 " Switch to Pastemode
 set pastetoggle=<F2>
@@ -69,9 +64,12 @@ set binary noeol
 " make that backspace key work the way it should
 set backspace=indent,eol,start
 
-" set up backupdirectory for .swap files
-set backupdir=~/Tmp/vim//
-
-set directory=~/Tmp/vim//
+" set up backupdirectory /no swap files
+set backupdir=~/.vim/tmp/backup//
+set directory=~/.vim/tmp/swap//
+set backupskip=/tmp/*,/private/tmp/*"
+set backup
+set writebackup
+set noswapfile
 
 

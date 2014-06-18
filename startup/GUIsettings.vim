@@ -27,9 +27,9 @@ set showmode            " Show mode I'm in
 set showcmd             " Show command I'm typing
 set laststatus=2        " Always show status line
 set cursorline          " highlight current line
-" set cursorline          " chighlight current line
+" hi cursorline term=bold cterm=None guibg=Grey40
 
-" Setting this below makes it so that error messages don't disappear 
+" Setting this below makes it so that error messages don't disappear
 " after one second on startup.
 set debug=msg
 

@@ -6,6 +6,8 @@
 " let g:LatexBox_viewer = '/Applications/Skim.app'
 let g:LatexBox_latexmk_options = "-pdflatex='pdflatex -synctex=1 \%O \%S'"
 let g:LatexBox_latexmk_async = 1
+" prevent the error message window from stealing the cursor
+let g:LatexBox_quickfix=2
 let g:LatexBox_latexmk_preview_continuously = 1
 
 map <silent> <Leader>ls :silent

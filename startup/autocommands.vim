@@ -39,3 +39,7 @@ autocmd InsertLeave * :set nonu rnu
 
 " Automatically remove trailing white space
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Automatically set filetype for tex files
+" autocmd BufRead,BufNewFile *.tex setlocal filetype=tex
+

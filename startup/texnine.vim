@@ -3,7 +3,7 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:tex_flavor = 'pdflatex'
+let g:tex_flavor = 'latex'
 let g:tex_viewer = {'app': 'xdg-open', 'target': 'pdf'}
 " let g:tex_verbose = 1
 
@@ -17,8 +17,9 @@ let g:tex_bibfiles = ['References.bib']
 
 " Don't Auto-complete [ ( {
 let g:tex_cycle_delimeters = 0
-" Change the <LocalLeader>S to mapping to \Sigma in ftplugin/tex.vim
-autocmd FileType tex inoremap <buffer> <LocalLeader>S \Sigma
 
-" ~/.vim/bundle/TeX-9/ftplugin/tex_nine.vim
+nmap <silent> ,tn :e ~/.vim/bundle/TeX-9/ftplugin/tex_nine.vim <CR>
 
+" ~/.vim/after/ftplugin/tex.vim
+" Change the mapping of <LocalLeader>S to \Sigma
+" au FileType tex inoremap <buffer> <LocalLeader>S \Sigma

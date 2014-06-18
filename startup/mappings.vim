@@ -5,27 +5,49 @@
 " General mappings
 " set <C-u> as <C-U> to navigate downwards in Normal Mode
 " set <C-i> as <C-D> to navigate downwards in Normal Mode
-map! <C-space> <Esc>
-map <C-space> <Esc>
+map! <C-m> <Esc>
+map <C-m> <Esc>
+imap <C-m> <Esc>
 nnoremap ; :
 nmap <silent> ;; :!
-":map \p i(<Esc>ea)<Esc>    "  map \p to add parentheses around a word
-":map \c i{<Esc>ea}<Esc>    "  map \c to add curly braces
+
+" Terminal mappings
+" Force <C-Space> to map to <Esc> in terminal
+inoremap <C-Space> <Esc>
+inoremap <C-@> <Esc>
+" protecting <Enter> key in insert mode
+inoremap <CR> <CR>
 
 " Movement mappings
 nmap <C-k> <C-U>
 nmap <C-j> <C-D>
-
+map <C-l> g$
+map <C-h> g^
 map j gj
 map k gk
 map <Up> gk
 map <Down> gj
-
+imap <C-l> <Right>
+imap <C-h> <Left>
+imap <C-j> <Down>
+imap <C-k> <Up>
+imap <C-u> <C-x>
+cnoremap <C-y>      <Home>
+cnoremap <C-e>      <Left>
+cnoremap <C-o>      <End>
+cnoremap <C-f>      <Right>
+cnoremap <C-p>      <Up>
+" cnoremap <C-n>      <End>
+" cnoremap <C-j>      <S-Left>
+" cnoremap <C-k>      <S-Right>
+" cnoremap <C-w>      <C-W>
 "map $ g$
 "map 0 g0
 "map ^ g^
-map <C-l> g$
-map <C-h> g^
+" Go to link
+nmap <silent> gl <C-]>
+
+
 " Change the directory to the currently opened file
 nmap <silent> ,tc :lcd %:p:h<CR>:!pwd<CR>
 " Change the directory to ~/.vim/
@@ -33,15 +55,24 @@ nmap <silent> ,tv :cd ~/.vim/<CR>:!pwd<CR>
 " Change the directory to ~/.vim/bundle/
 nmap <silent> ,tb :cd ~/.vim/bundle/<CR>:!pwd<CR>
 
+
 " Toggle on and off Spell check
 nmap <silent> ,sc :setlocal spell spelllang=en_us<CR>
 
+" Editing mappings
 nmap <silent> ,ev :e ~/.vim/vimrc <CR>
+nmap <silent> ,eg :e ~/.vim/gvimrc <CR>
 nmap <silent> ,ff gggqG<CR>
 nmap <silent> ,sv :so $MYVIMRC<CR>
 nmap <Space>  :star<CR> <C-[>
 nmap <CR> o<C-[>
+imap <silent> .<Space> .<CR>
+nmap <silent> ,dv :vert diffsplit
+nmap <silent> vv <C-h>v<C-l>
+" visual reselect of just pasted
+nnoremap gp `[v`]
 
+" Window mappings
 nmap <silent> ,j :wincmd j <CR>
 nmap <silent> ,k :wincmd k <CR>
 nmap <silent> ,l :wincmd l <CR>
@@ -49,12 +80,9 @@ nmap <silent> ,h :wincmd h <CR>
 nmap <silent> ,c :wincmd c <CR>
 nmap <silent> ,o :wincmd o <CR>
 "nmap <silent> ,ls :!ls <CR>
-nmap <silent> vv <C-h>v<C-l>
 
-nmap <silent> ,en :e ~/.vim/bundle/Tex-9/ftplugin/tex_nine.vim<CR>
+" Make sessions
 nmap <silent> ,ms :mksession! ~/Tmp/vimsession/recent.vim<CR>
-
-nmap <silent> ,dv :vert diffsplit
 
 function! Makesession()
        so ~/Tmp/vimsession/recent.vim
@@ -62,32 +90,8 @@ function! Makesession()
 endfunction
 
 nmap <silent> ,ss :call Makesession() <CR>
-nmap <silent> ,ga :!git submodule add
-nmap <silent> ,gr :!git rm --cached
-
-" Insert mode mappings
-imap <C-l> <Right>
-imap <C-h> <Left>
-imap <C-j> <Down>
-imap <C-k> <Up>
-imap <C-u> <C-x>
-" inoremap <buffer> <LocalLeader>/ /<Tab>
-imap <silent> .<Space> .<CR>
-
-
-
-" Command Line mappings
-" allow command line editing like emacs
- cnoremap <C-y>      <Home>
- cnoremap <C-e>      <Left>
- cnoremap <C-o>      <End>
- cnoremap <C-f>      <Right>
-" cnoremap <C-n>      <End>
- cnoremap <C-p>      <Up>
-" cnoremap <C-j>      <S-Left>
-" cnoremap <C-k>      <S-Right>
-" cnoremap <C-w>      <C-W>
-" move in insert mode
+" nmap <silent> ,ga :!git submodule add
+" nmap <silent> ,gr :!git rm --cached
 
 
 """""
